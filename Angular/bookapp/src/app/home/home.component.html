@@ -37,7 +37,7 @@
             <td>{{book.genre}}</td>  
             <td>{{book.author}}</td>
             <td>{{book.price}}</td>
-          <td *ngIf="isUserLoggedIn()"><button render="renderer" class="btn btn-primary" *ngIf="isUserLoggedIn()"><i class="bi bi-pencil-square"></i> Edit</button></td>
+          <td *ngIf="isUserLoggedIn()"><button render="renderer" class="btn btn-primary" *ngIf="isUserLoggedIn()" (click)="editbook(book)"><i class="bi bi-pencil-square"></i> Edit</button></td>
           <td *ngIf="isUserLoggedIn()"><button render="renderer" class="btn btn-danger"  *ngIf="isUserLoggedIn()" (click)="deleteBook(book)"><i class="bi bi-trash"></i> Delete</button></td>    
         </tr>
         

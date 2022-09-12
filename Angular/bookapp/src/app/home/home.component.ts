@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MsalService } from '@azure/msal-angular';
 import { Books } from '../model/book.model';
 import { BookService } from '../service/book.service';
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
    return false;
  }
 
-  constructor(private bookService : BookService,private msalService:MsalService) { }
+  constructor(private bookService : BookService,private msalService:MsalService,private router :Router) { }
 
   ngOnInit(): void {
     this.getAllBooks();
@@ -84,6 +85,13 @@ export class HomeComponent implements OnInit {
     setTimeout(()=>{
       this.getAllBooks();
     },1000)
+  }
+
+  editbook(data:any)
+  {
+    if (data!=undefined && data!=null) {
+      this.router.navigateByUrl('/update', { state: {data} });
+    }
   }
 
 }
