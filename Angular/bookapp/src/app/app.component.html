@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Books</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="navbar-brand" class="nav-link" routerLink="home" routerLinkActive="active"><i class="bi bi-house-door-fill"></i> Home</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <h4 class="navbar-brand" *ngIf="isUserLoggedIn()">Hello {{username}}</h4>
+            <a routerLink=""  class="navbar-brand login-padding" *ngIf="!isUserLoggedIn()" (click)="login()" ><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            <a routerLink="" class="navbar-brand login-padding" *ngIf="isUserLoggedIn()" (click)="logout()" ><i class="bi bi-box-arrow-left"></i> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<br>
+<router-outlet></router-outlet>
