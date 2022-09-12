@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
+import { UpdateComponent } from './update/update.component';
 
 export function MSALInstanceFactory() : IPublicClientApplication{
   return new PublicClientApplication({
@@ -23,7 +24,8 @@ export function MSALInstanceFactory() : IPublicClientApplication{
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
