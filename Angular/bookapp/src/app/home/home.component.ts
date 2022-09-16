@@ -64,7 +64,6 @@ export class HomeComponent implements OnInit {
     this.saved_btn = true;
     if(this.book.title!='')
     {
-      console.log(this.book);
       this.bookService.addBook(this.book).subscribe();
     }
     else

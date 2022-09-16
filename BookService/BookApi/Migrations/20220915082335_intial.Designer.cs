@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220908124333_intial")]
+    [Migration("20220915082335_intial")]
     partial class intial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
