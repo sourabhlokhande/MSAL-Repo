@@ -65,6 +65,9 @@ namespace BookApi.Service
                 if(bookObj != null )
                 {
                     bookObj.title = book.title;
+                    bookObj.genre = book.genre;
+                    bookObj.author = book.author;
+                    bookObj.price = book.price;
                 }
                 _dbContext.SaveChanges();
                 return $"book has been updated";

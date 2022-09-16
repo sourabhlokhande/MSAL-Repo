@@ -9,8 +9,9 @@ import { Books } from "../model/book.model";
 
 export class BookService
 {
-    
-    baseUrl = 'https://localhost:7129/api/Book/'
+   
+    //baseUrl = 'https://localhost:7129/api/Book/'
+    baseUrl = 'https://bookapiservices.azurewebsites.net/api/Book/';
 
     constructor(private http:HttpClient){}
     
@@ -26,4 +27,8 @@ export class BookService
     deleteBook(book: Books) {
         return this.http.delete(this.baseUrl+"DeleteBook/"+book.bookId).subscribe(()=>{});
     }
+
+    updateBook(book: Books) {
+        return this.http.put<Books>(this.baseUrl+'UpdateBook', book)
+      }
 }
