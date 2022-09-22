@@ -12,12 +12,12 @@ namespace BookApi.Service
             _dbContext = dbContext;
         }
 
-        public string AddBook(Books book)
+        public async Task<string> AddBook(Books book)
         {
             try
             {
-                _dbContext.BookTbl.Add(book);
-                _dbContext.SaveChanges();
+                await _dbContext.BookTbl.AddAsync(book);
+                await _dbContext.SaveChangesAsync();
                 return $"{book.title} has been added";
             }
             catch(Exception ex)
@@ -27,16 +27,16 @@ namespace BookApi.Service
             
         }
 
-        public string DeleteBook(long bookId)
+        public async Task<string> DeleteBook(long bookId)
         {
             try
             {
-                var bookObj = _dbContext.BookTbl.Find(bookId);
+                var bookObj = await _dbContext.BookTbl.FindAsync(bookId);
                 if(bookObj != null)
                 {
                     _dbContext.Remove(bookObj);
                 }
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
                 return $"book has been deleted";
             }
             catch (Exception ex)
@@ -45,11 +45,11 @@ namespace BookApi.Service
             }
         }
 
-        public IEnumerable<Books> GetBooks()
+        public async Task<IEnumerable<Books>> GetBooks()
         {
             try
             {
-                return _dbContext.BookTbl.ToList();
+                return await Task.Run(() => _dbContext.BookTbl.ToList());
             }
             catch (Exception ex)
             {
@@ -57,11 +57,11 @@ namespace BookApi.Service
             }
         }
 
-        public string UpdateBook(Books book)
+        public async Task<string> UpdateBook(Books book)
         {
             try
             {
-                var bookObj = _dbContext.BookTbl.Find(book.bookId);
+                var bookObj = await _dbContext.BookTbl.FindAsync(book.bookId);
                 if(bookObj != null )
                 {
                     bookObj.title = book.title;
@@ -69,7 +69,7 @@ namespace BookApi.Service
                     bookObj.author = book.author;
                     bookObj.price = book.price;
                 }
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
                 return $"book has been updated";
             }
             catch (Exception ex)

@@ -5,9 +5,9 @@ namespace BookApi.Service
 {
     public interface IBookService
     {
-        string AddBook(Books book);
-        string DeleteBook(long bookId);
-        IEnumerable<Books> GetBooks();
-        string UpdateBook(Books book);
+        Task<string> AddBook(Books book);
+        Task<string> DeleteBook(long bookId);
+        Task<IEnumerable<Books>> GetBooks();
+        Task<string> UpdateBook(Books book);
     }
 }
