@@ -17,11 +17,11 @@ namespace BookApi.Controllers
         }
 
         [HttpGet("GetBooks")]
-        public IActionResult GetBooks()
+        public async Task<IActionResult> GetBooks()
         {
             try
             {
-                IEnumerable<Books> booksData = _bookService.GetBooks();
+                IEnumerable<Books> booksData = await _bookService.GetBooks();
                 return Ok(booksData);
             }
             catch (Exception ex)
@@ -31,11 +31,11 @@ namespace BookApi.Controllers
         }
 
         [HttpPost("AddBook")]
-        public IActionResult AddBook(Books book)
+        public async Task<IActionResult> AddBook(Books book)
         {
             try
             {
-                var result = _bookService.AddBook(book);
+                var result = await _bookService.AddBook(book);
                 return Ok(result);
             }
             catch(Exception ex)
@@ -46,11 +46,11 @@ namespace BookApi.Controllers
         }
 
         [HttpPut("UpdateBook")]
-        public IActionResult UpdateBook(Books book)
+        public async Task<IActionResult> UpdateBook(Books book)
         {
             try
             {
-                var result = _bookService.UpdateBook(book);
+                var result = await _bookService.UpdateBook(book);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -60,11 +60,11 @@ namespace BookApi.Controllers
         }
 
         [HttpDelete("DeleteBook/{bookId:long}")]
-        public IActionResult DeleteBook(long bookId)
+        public async Task<IActionResult> DeleteBook(long bookId)
         {
             try
             {
-                var result = _bookService.DeleteBook(bookId);
+                var result = await _bookService.DeleteBook(bookId);
                 return Ok(result);
             }
             catch (Exception ex)
